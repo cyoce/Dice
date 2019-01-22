@@ -1,8 +1,3 @@
-Context = Struct.new('Context', :explode)
-
-
-
-
 class Roll
     def initialize type
         @n = type
