@@ -113,7 +113,7 @@ class Mul < Roll
     
     def roll(*ex)
         ex = [0] if ex.empty?
-        @a.roll(ex) + @b.roll(ex)
+        @a.roll(ex) * @b.roll(ex)
     end
     
     def to_s
@@ -135,7 +135,8 @@ class Wild < Roll
 end
 class Numeric
     def roll(*); self; end
-    def d(n); Array.new(self){Roll[n]}.inject(:+); end
+    alias r roll
+    def d(n); Array.new(self){Roll[n]}.inject(:+) || Roll[20]*0; end
     @@cache = {}
     def tn(t=4)
         [(self-t+4) / 4,0].max
